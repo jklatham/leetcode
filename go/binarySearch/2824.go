@@ -27,6 +27,7 @@ func main() {
 	fmt.Println(countPairs(arr2, -2))
 }
 
+// Issues:
 // 17/21 are returning true
 // should be 10
 // Issue was j := 1. Every time i incremented, j was reset to 1 resulting in extra iterations. Changed to j := i + 1;
