@@ -10,7 +10,8 @@
 
 # Test binary, built with `go test -c`
 *.test
-main.go
+go/problems/main.go
+go/problems/1122-nomap.go
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
