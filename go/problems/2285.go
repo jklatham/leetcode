@@ -16,60 +16,39 @@ Return the maximum total importance of all roads possible after assigning the va
 // for each road return sum of value of connected cities
 package problems
 
-import (
-	"fmt"
-)
-
-/* // returns map of cities:value
-func getCityValueMap(n int) map[int]int {
-	cityValue := make(map[int]int)
-	for i := range n {
-		cityValue[i] = i
-	}
-	return cityValue
-} */
+import "sort"
 
 func MaximumImportance(n int, roads [][]int) int64 {
 	cityValue := make(map[int]int)
-	//cityValue := make([]int, n)
-	fmt.Println(cityValue)
-	// Count connections in roads
+	// map each city to its value (number of connections)
+	// increment city value for each city in road
 	for _, a := range roads {
-		for _, b := range a {
-			cityValue[b] += 1
-		}
+		cityValue[a[0]]++
+		cityValue[a[1]]++
 	}
-	fmt.Println(cityValue)
 
-	// Increment duplicates
-	/* for i := 0; i <= len(cityValue); i++ {
-		for j := 1; j < len(cityValue); j++ {
-			if i != j && cityValue[i] == cityValue[j] {
-				cityValue[j] += 1
-				j = 1
-			}
-		}
-	} */
-
-	i := 0
-
-	for i < len(cityValue) {
-		for next := range cityValue {
-			if cityValue[i] == cityValue[next] {
-				cityValue[next] += 1
-			}
-			i++
-		}
+	// Crate slice containing all nodes
+	keys := make([]int, 0, len(cityValue))
+	for k := range cityValue {
+		keys = append(keys, k)
 	}
-	fmt.Println(cityValue)
+	// Sort slice descending order based on city value
+	sort.Slice(keys, func(i, j int) bool {
+		return cityValue[keys[i]] > cityValue[keys[j]]
+	})
 
-	// find importance
+	// assign city map value from highest to lowest
+	cityMap := make(map[int]int)
+
+	for i, k := range keys {
+		cityMap[k] = n - i
+	}
+
+	// Iterate the roads and sum the value of connected nodes
 	total := 0
-	for i := 0; i < len(roads); i++ {
-		total += (cityValue[roads[i][0]] + cityValue[roads[i][1]])
+	for _, road := range roads {
+		total += cityMap[road[0]] + cityMap[road[1]]
 	}
-	fmt.Println(total)
-	maximum := int64(total)
 
-	return maximum
+	return int64(total)
 }
