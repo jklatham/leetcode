@@ -23,4 +23,7 @@ func getGetAncestors(t testing.TB, got, want [][]int) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %q want %q", got, want)
 	}
+	/* 	if got != want {
+		t.Errorf("got %q want %q", got, want)
+	} */
 }
