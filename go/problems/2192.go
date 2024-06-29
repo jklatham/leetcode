@@ -3,7 +3,7 @@
 package problems
 
 func GetAncestors(n int, edges [][]int) [][]int {
-	var ancestors [][]int
+	var answer [][]int
 
-	return ancestors
+	return answer
 }
