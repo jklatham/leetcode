@@ -8,8 +8,8 @@ func ThreeConsecutiveOdds(arr []int) bool {
 	for i < len(arr) {
 		if arr[i]%2 != 0 {
 			count += 1
-		} else if count > 0 && count < 3 {
-			count -= 1
+		} else if count < 3 {
+			count = 0
 		}
 		fmt.Println(count)
 		i++
