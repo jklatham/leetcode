@@ -7,8 +7,10 @@ import (
 
 func main() {
 
-	n1 := 8
-	eL1 := [][]int{{0, 3}, {0, 4}, {1, 3}, {2, 4}, {2, 7}, {3, 5}, {3, 6}, {3, 7}, {4, 6}}
+	arr1 := []int{2, 6, 4, 1}
 
-	fmt.Println(problems.GetAncestors(n1, eL1))
+	arr2 := []int{1, 2, 34, 3, 4, 5, 7, 23, 12}
+
+	fmt.Println(problems.ThreeConsecutiveOdds(arr1))
+	fmt.Println(problems.ThreeConsecutiveOdds(arr2))
 }
