@@ -1,7 +1,5 @@
 package problems
 
-import "fmt"
-
 func ThreeConsecutiveOdds(arr []int) bool {
 	count := 0
 	i := 0
@@ -11,7 +9,6 @@ func ThreeConsecutiveOdds(arr []int) bool {
 		} else if count < 3 {
 			count = 0
 		}
-		fmt.Println(count)
 		i++
 	}
 
