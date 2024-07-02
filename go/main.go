@@ -7,10 +7,11 @@ import (
 
 func main() {
 
-	arr1 := []int{2, 6, 4, 1}
+	arr1 := []int{1, 2, 2, 1}
+	arr2 := []int{2, 2}
+	arr3 := []int{4, 9, 5}
+	arr4 := []int{9, 4, 9, 8, 4}
 
-	arr2 := []int{1, 2, 34, 3, 4, 5, 7, 23, 12}
-
-	fmt.Println(problems.ThreeConsecutiveOdds(arr1))
-	fmt.Println(problems.ThreeConsecutiveOdds(arr2))
+	fmt.Println(problems.Intersect(arr1, arr2))
+	fmt.Println(problems.Intersect(arr3, arr4))
 }
