@@ -2,53 +2,38 @@
 
 package problems
 
-import "fmt"
-
 func threeMoves(nums []int) []int {
-	count := 3
-	avg := getArrAvg(nums)
-	var left, right []int
+	tempdownArr := append([]int{}, nums...)
+	tempupArr := append([]int{}, nums...)
 
-	for i := 0; i < len(nums); i++ {
-		if nums[i] < avg {
-			left = append(left, nums[i])
-		} else {
-			right = append(right, nums[i])
-		}
-	}
+	up := getArrDiff(threeMovesUp(tempupArr))
+	down := getArrDiff(threeMovesDown(tempdownArr))
 
-	if len(left) > len(right) {
-		for count > 0 {
-			threeMovesDown(nums)
-			fmt.Println("Down", nums, count)
-			count--
-		}
+	if up > down {
+		return tempdownArr
 	} else {
-		for count > 0 {
-			threeMovesUp(nums)
-			fmt.Println("Up", nums, count)
-			count--
-		}
+		return tempupArr
 	}
-
-	return nums
 }
 
 func threeMovesDown(nums []int) []int {
-	newHi := getHighestIndex(nums)
-	newLo := getLowestIndex(nums)
+	for i := 0; i < 3; i++ {
+		newHi := getHighestIndex(nums)
+		newLo := getLowestIndex(nums)
 
-	nums[newHi] = nums[newLo]
+		nums[newHi] = nums[newLo]
+	}
 
 	return nums
 }
 
 func threeMovesUp(nums []int) []int {
-	newHi := getHighestIndex(nums)
-	newLo := getLowestIndex(nums)
+	for i := 0; i < 3; i++ {
+		newHi := getHighestIndex(nums)
+		newLo := getLowestIndex(nums)
 
-	nums[newLo] = nums[newHi]
-
+		nums[newLo] = nums[newHi]
+	}
 	return nums
 }
 
@@ -56,23 +41,13 @@ func getMovedDiff(nums []int) int {
 	if len(nums) <= 3 {
 		return 0
 	} else {
-		newNums := threeMoves(nums)
-		return (newNums[getHighestIndex(nums)] - newNums[getLowestIndex(nums)])
+		nums = threeMoves(nums)
+		return (nums[getHighestIndex(nums)] - nums[getLowestIndex(nums)])
 	}
 }
 
 func getArrDiff(nums []int) int {
 	return nums[getHighestIndex(nums)] - nums[getLowestIndex(nums)]
-}
-
-func getArrAvg(nums []int) int {
-	sum := 0
-
-	for i := 0; i < len(nums); i++ {
-		sum += nums[i]
-	}
-
-	return sum / len(nums)
 }
 
 func getLowestIndex(nums []int) int {

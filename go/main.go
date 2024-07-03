@@ -7,11 +7,17 @@ import (
 
 func main() {
 
-	arr1 := []int{1, 2, 2, 1}
-	arr2 := []int{2, 2}
-	arr3 := []int{4, 9, 5}
-	arr4 := []int{9, 4, 9, 8, 4}
+	nums1 := []int{5, 3, 2, 4}
+	nums2 := []int{1, 5, 0, 10, 14}
+	nums3 := []int{3, 100, 20}
+	nums4 := []int{6, 6, 0, 1, 1, 4, 6} // expect 2 got 4
+	nums5 := []int{1, 5, 6, 14, 15}     // expect 1 got 4
+	nums6 := []int{82, 81, 95, 75, 20}  // expect 1 got 13
 
-	fmt.Println(problems.Intersect(arr1, arr2))
-	fmt.Println(problems.Intersect(arr3, arr4))
+	fmt.Println(problems.MinDifference(nums1))
+	fmt.Println(problems.MinDifference(nums2))
+	fmt.Println(problems.MinDifference(nums3))
+	fmt.Println(problems.MinDifference(nums4))
+	fmt.Println(problems.MinDifference(nums5))
+	fmt.Println(problems.MinDifference(nums6))
 }
